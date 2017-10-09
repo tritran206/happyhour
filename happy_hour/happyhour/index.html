@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<div span>
+<title> Happy Hour </title>
+<i class="material-icons">local_drink</i>
+</div>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">      
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a href="#" class="drink_icon"><i class="material-icons">drink cup</i></a>
+<h1 class="happy-hour"> Happy Hour</h1>
+
+
+<script>
+  (function() {
+    var cx = '016589078460791508829:lkbgu7ly9yu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+<p class="p1">It's 5 o'clock somewhere...</p>
+
+
+
+
+
+<p class="p2">Find your current location.</p>
+
+<button class="button" onclick="getLocation()">Locate</button>
+
+<p id="andGo"></p>
+
+<script>
+var x = document.getElementById("andGo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Cannot find your current location.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+}
+</script>
+
+</body>
+</html>

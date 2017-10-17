@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from .models import Restaurant, Drink
 from geopy.geocoders import Nominatim
 from geopy.distance import vincenty
 
@@ -7,24 +8,45 @@ def index(request):
     return render(request, 'happy_hour_app/search_form.html')
 
 def results(request):
-    # key = "AIzaSyBvbKFWJu80KQ1yxgxfP4k9hMVEaVBYamc"
-    # location = request.POST
-    # gmaps = GoogleMaps(key)
-    #
-    # directions = gmaps.directions("18817 1st Ave W. Bothell, WA 98012", "20814 31st Ave W. Lynnwood, WA 98036")
-    # print(directions['Distance'])
 
-    geolocator = Nominatim()
-    location_a = geolocator.geocode("18817 1st Ave W. Bothell, WA 98012")
-    location_b = geolocator.geocode("20814 31st Ave W. Lynnwood, WA 98036")
-    lat_long_a = (location_a.latitude, location_a.longitude)
-    lat_long_b = (location_b.latitude, location_b.longitude)
+    address_location = request.GET['address_location']
+    distance = request.GET['distance']
+    local_restaurant_list = Restaurant.objects.find_restaurants_address(address_location, distance)
 
-    print("location A: " + location_a.address)
-
-    print("location B: " + location_b.address)
-    print("distance from A and B is: " + str(vincenty(lat_long_a, lat_long_b).miles))
+    JSON_Data = Restaurant.objects.restaurant_json(address_location, local_restaurant_list)
+    
+    print(JSON_Data)
 
     return redirect('/')
+
+def restaurant(request, restaurant_id):
+
+    restaurant = Restaurant.objects.get(id = restaurant_id)
+    drinks = Drink.objects.filter(restaurant_id = restaurant_id)
+
+    JSON_Data = {
+                	"id" : restaurant.id,
+                	"name" : restaurant.name,
+                	"rating" : restaurant.rating,
+                	"address" : restaurant.address,
+                	"happy_hour_start" : restaurant.happy_hour_start,
+                	"happy_hour_end" : restaurant.happy_hour_end,
+                	"drinks" : []
+                }
+
+    for drink in drinks:
+        JSON_Data["drinks"].append({"drink_name" : drink.name, "price" : drink.price})
+
+    print(JSON_Data)
+
+    return redirect('/')
+
+
+    # context = {
+    # 'results': local_restaurant_list
+    # }
+    #
+    #
+    # return render(request, '/results.html', context)
 
 # Create your views here.

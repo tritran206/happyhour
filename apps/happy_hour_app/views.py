@@ -6,7 +6,7 @@ from django.http import JsonResponse
 
 def index(request):
 
-    return render(request, 'happy_hour_app/search_form.html')
+    return render(request, 'happy_hour_app/index.html')
 
 def results(request):
 

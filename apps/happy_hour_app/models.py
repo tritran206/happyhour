@@ -45,7 +45,7 @@ class Restaurant_Manager(models.Manager):
                                 "restaurant_id" : drink.restaurant_id_id,
                                 "restaurant_name" : drink.restaurant_name,
 	                            "drink_name" : drink.name,
-	                            "price" : drink.price,
+	                            "price" : float(drink.price),
 	                            "distance" : distance
                 }
                 JSON_Data.append(new_data)

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Restaurant, Drink
 from geopy.geocoders import Nominatim
 from geopy.distance import vincenty
+from django.http import JsonResponse
 
 def index(request):
 
@@ -14,10 +15,10 @@ def results(request):
     local_restaurant_list = Restaurant.objects.find_restaurants_address(address_location, distance)
 
     JSON_Data = Restaurant.objects.restaurant_json(address_location, local_restaurant_list)
-    
+
     print(JSON_Data)
 
-    return redirect('/')
+    return JsonResponse(JSON_Data, safe=False)
 
 def restaurant(request, restaurant_id):
 
@@ -39,14 +40,11 @@ def restaurant(request, restaurant_id):
 
     print(JSON_Data)
 
-    return redirect('/')
+    return JsonResponse(JSON_Data, safe=False)
 
 
-    # context = {
-    # 'results': local_restaurant_list
-    # }
+
     #
-    #
-    # return render(request, '/results.html', context)
+    # return render(request, '/results.html', JSON_Data)
 
 # Create your views here.

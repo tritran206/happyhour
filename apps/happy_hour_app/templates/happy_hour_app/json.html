@@ -1,0 +1,47 @@
+<html>
+<body>
+<head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+
+<script>
+
+    $(function() {
+
+
+   var Menu = [];
+
+   $.getJSON('json.js', function(data) {
+       $.each(data.Menu, function(i, f) {
+          var tblcolumn = "<tr>" + "</td>" +
+           "<td>" + restaurant_name + "</td>" + "<td>" + drink_name + "</td>" + "<td>" + price + "</td>" + "</tr>" + distance + "</td>" + "</tr>"
+           $(tblcolumn).appendTo("#userdata tbody");
+     });
+
+   });
+
+});
+</script>
+</head>
+
+<body style="background-color:powderblue;">
+
+<div class="wrapper">
+<div class="profile">
+   <table id= "userdata" border="2">
+  <thead>
+            <th>restaurant_id</th>
+            <th>restaurant_name</th>
+            <th>drink_name</th>
+            <th>price</th>
+            <th>distance</th>
+        </thead>
+      <tbody>
+
+       </tbody>
+   </table>
+
+</div>
+</div>
+
+</body>
+</html>

@@ -8,9 +8,9 @@
   </head>
   <body>
     <h1>Search</h1>
-    <form action="/search_results" method="get">
-      {%csrf_token%}
-      Current location: <input type="text" name="address_location"><br> </input>
+    <form action="/search_results" method="get" id="search-rest">
+      
+      Current location: <input type="text" name="address_location" id="address_location"><br> </input>
       Distance:
 
       <select name="distance">

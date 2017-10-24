@@ -1,20 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<div span>
-<title> Happy Hour </title>
-<i class="material-icons">local_drink</i>
-</div>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-<link rel="stylesheet" href="static/happy_hour_app/css/style.css">
-</head>
-<body>
-
+{% extends "happy_hour_app/base.html" %}
+{% block content %}
 <a href="#" class="drink_icon"><i class="material-icons">drink cup</i></a>
 <h1 class="happy-hour"> Happy Hour</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+     {% include "happy_hour_app/search_form.html" %}
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+
+  </div>
+</div>
+
+
 <div class="dropdown">
   <button onclick="myFunction()" class="dropbtn">Menu</button>
   <div id="myDropdown" class="dropdown-content">
@@ -25,20 +25,6 @@
     </ul>
   </div>
 </div>
-
-<script>
-  (function() {
-    var cx = '016589078460791508829:lkbgu7ly9yu';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
-<gcse:search></gcse:search>
-
 
   </head>
   <body>
@@ -178,10 +164,4 @@ function showPosition(position) {
 }
 
 </script>
-
-
-
-
-
-</body>
-</html>
+{% endblock %}

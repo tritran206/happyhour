@@ -1,19 +1,19 @@
 body {
-  color: white;
-  background-color: lightseagreen;
- font-family: 'Lobster', cursive;
+  /*color: white;*/
+  /*background-color: lightseagreen;*/
+ font-family: sans-serif; /*'Lobster', cursive;*/.
 }
 
 p {
   color: white;
-  
+
 }
 
  .material-icons{
    margin: 1em;
   display: inline-block;
   margin-left: 570px;
-  
+
 }
 
 .happy-hour {
@@ -121,7 +121,7 @@ p {
       #target {
         width: 345px;
       }
-  
+
 /* Dropdown Button */
 .dropbtn {
     background-color: #4CAF50;
@@ -166,4 +166,3 @@ p {
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
-

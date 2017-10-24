@@ -19,6 +19,20 @@ class Restaurant_Manager(models.Manager):
                 local_restaurant_list.append(restaurant)
         return local_restaurant_list
 
+    def find_restaurants_lat_lng(self, lat, lng, distance):
+
+        current_location = (lat, lng)
+
+        all_restaurants = Restaurant.objects.all()
+        local_restaurant_list = []
+
+        for restaurant in all_restaurants:
+            db_restaurant_lat_lng = (restaurant.lat, restaurant.lng)
+
+            if vincenty(db_restaurant_lat_lng, lat_lng_current_location).miles < float(distance):
+                local_restaurant_list.append(restaurant)
+        return local_restaurant_list
+
     def restaurant_json(self, current_location, local_restaurant_list):
 
         all_drinks = Drink.objects.all()

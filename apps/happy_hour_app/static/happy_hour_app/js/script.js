@@ -1,6 +1,6 @@
 $( document ).ready(function() {
   $('#search-rest').on('submit', function(event){
-    // event.preventDefault();
+    event.preventDefault();
     console.log("form submitted!")  // sanity check
     var data = $('#address_location').val();
     console.log('data = ' + data);
@@ -18,7 +18,8 @@ function get_restaurants(data) {
     $.ajax({
         url : "/search_results", // the endpoint
         type: "get",
-        data : data, // data sent with the post request
+        data : { address_location: data,
+         distance: 1}, // data sent with the post request
 
 
         // handle a successful response
@@ -37,4 +38,22 @@ function get_restaurants(data) {
         }
     });
 };
+
+// var Menu = [{
+// 	"restaurant_id": "aa",
+// 	"restaurant_name": "a",
+// 	"drink_name": "drink",
+// }];
+//
+// console.log(Menu);
+
+
+
+// $.ajax({
+//   dataType: "json",
+//   url: '/search_results',
+//   data: data,
+//   success: success
+// });
+
 });

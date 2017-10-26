@@ -20,6 +20,9 @@ def results(request):
 
     return JsonResponse(JSON_Data, safe=False)
 
+def search(request):
+    return render(request, 'happy_hour_app/json.html')
+
 def restaurant(request, restaurant_id):
 
     restaurant = Restaurant.objects.get(id = restaurant_id)

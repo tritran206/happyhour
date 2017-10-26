@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'happy_hour_app/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
-    <meta charset="utf-8">
-    <title>Search Menus</title>
-  </head>
-  <body>
+{% extends "happy_hour_app/base.html" %}
+{% block content %}
     <h1>Search</h1>
-    <form action="/search_results" method="get" id="search-rest">
-      
+    <form action="/search" method="get" id="search-rest">
+
       Current location: <input type="text" name="address_location" id="address_location"><br> </input>
       Distance:
 
@@ -22,5 +15,4 @@
       <input type="Submit" value="Submit">
 
     </form>
-  </body>
-</html>
+{% endblock %}
